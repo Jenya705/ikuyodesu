@@ -6,8 +6,7 @@
 template<typename T>
 class Mat2x2 {
 public:
-    Vec2<T> r1;
-    Vec2<T> r2;
+    Vec2<T> r1, r2;
 
     Mat2x2(): r1(vec((T)0,(T)0)), r2(vec((T)0, (T)0)) {}
     Mat2x2(Vec2<T> r1, Vec2<T> r2): r1(r1), r2(r2) {}
