@@ -1,6 +1,10 @@
+#include <cstdint>
+
 #include "SDL3/SDL.h"
 #include "utils/config.h"
 #include <iostream>
+
+#include "alg/vec.hpp"
 
 int main() {
     Config config;
