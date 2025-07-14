@@ -41,7 +41,7 @@ public:
 Mat2x2<float> rot_mat(float angle) {
     float c = cos(angle);
     float s = sin(angle);
-    return Mat2x2<float>(vec(c, -s), vec(s, c));
+    return Mat2x2<float>(Vec2<float>(c, -s), Vec2<float>(s, c));
 }
 
 #endif
