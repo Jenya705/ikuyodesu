@@ -8,7 +8,7 @@
 
 int main() {
     Config config;
-
+    
     config.init();
     
     Logger::print(Logger::DEBUG, "ikuyodesu version: ", config.get<std::string>("info", "version"));

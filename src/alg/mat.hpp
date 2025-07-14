@@ -1,7 +1,7 @@
 #ifndef MAT_HPP_INCLUDED
 #define MAT_HPP_INCLUDED
 
-#include "alg/vec.hpp"
+#include "../alg/vec.hpp"
 
 template<typename T>
 class Mat2x2 {
@@ -13,11 +13,11 @@ public:
     Mat2x2(T v00, T v10, T v01, T v11): r1(vec(v00, v10)), r2(vec(v01, v11)) {}
     Mat2x2(Mat2x2 mat): r1(mat.r1), r2(mat.r2) {}
 
-    Vec2<T> c1() const {
+    constexpr Vec2<T> c1() const {
         return vec(r1.x, r2.x);
     }
 
-    Vec2<T> c2() const {
+    constexpr Vec2<T> c2() const {
         return vec(r1.y, r2.y);
     }
 

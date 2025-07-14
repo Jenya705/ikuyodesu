@@ -5,6 +5,16 @@
 #include <unordered_map>
 #include "alg/vec.hpp"
 
+template<typename T, std::size_t C, std::size_t R>
+class TilemapLayerChunk {
+public:
+    std::array<T, C * R> data;
+
+    T& tile_at(Vec2<std::int32_t> tile) {
+        return data[tile.y * C + tile.x];
+    }
+};
+
 template<typename T>
 class TilemapLayer {
 public:
@@ -21,16 +31,6 @@ public:
     T* tile_at(Vec2<std::int32_t> tile) {
         auto chunk = chunk_at(tile / 16);
         return chunk == nullptr ? nullptr : chunk.tile_at(((tile % 16) + vec(CHUNK_R, CHUNK_C)) % 16);
-    }
-};
-
-template<typename T, std::size_t C, std::size_t R>
-class TilemapLayerChunk {
-public:
-    std::array<T, C * R> data;
-
-    T& tile_at(Vec2<std::int32_t> tile) {
-        return data[tile.y * C + tile.x];
     }
 };
 
