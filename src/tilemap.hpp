@@ -38,8 +38,14 @@ public:
 
     void for_each(std::function<void(Vec2<std::int32_t>, T&)> func) {
         for (auto& p: chunks) {
-            func(p->first, p->second);
-        }
+            auto v = p.first * 16;
+            for (auto y = 0; y < CHUNK_C; y++) {
+                for (auto x = 0; x < CHUNK_R; x++) {
+                    auto tv = v + vec(x,y);
+                    func(tv, p.second.tile_at(vec(x,y)));
+                }
+            }
+       }
     }
 };
 

@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <cmath>
+#include <vector>
 
 #define vec(x, y) Vec2(x, y)
 
@@ -28,6 +29,8 @@ public:
     void operator/=(const T& rhs) { x /= rhs; y /= rhs; };
     void operator%=(const T& rhs) { x %= rhs; y %= rhs; };
 
+    bool operator==(const T& v) const { return x==v.x && x==v.y; };
+
     T& operator[](std::size_t i) { return i == 0 ? x : y; };
 
     T dot(const Vec2<T>& rhs) { return x * rhs.x + y * rhs.y; };
@@ -35,5 +38,11 @@ public:
     T len() { return sqrt(squared_len()); };
 };
 
+template<typename T>
+struct std::hash<Vec2<T>> {
+    std::size_t operator()(const Vec2<T>& s) const noexcept {
+        return std::hash<T>{}(s.x) ^ (std::hash<T>{}(s.y));
+    }
+};
 
 #endif
