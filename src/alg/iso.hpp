@@ -1,8 +1,8 @@
 #ifndef ISO_HPP_INCLUDED
 #define ISO_HPP_INCLUDED
 
-#include "alg/vec.hpp"
-#include "alg/mat.hpp"
+#include "../alg/vec.hpp"
+#include "../alg/mat.hpp"
 
 class Iso2 {
 public:
