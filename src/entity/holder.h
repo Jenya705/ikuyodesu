@@ -1,12 +1,14 @@
 #ifndef HOLDER_H
 #define HOLDER_H
 
-#include "entity.h"
+#include <SDL3/SDL.h>
 #include <set>
+
+class Entity;
 
 class Holder {
     public:
-    enum relationship {
+    enum class relationship {
         FRIEND,
         ENEMY,
         NEUTRAL

@@ -98,7 +98,7 @@ void Entity::setTexture(){
 
 void Holder::init(SDL_Renderer *renderer){
     holder.rend = renderer;
-    Logger::print(Logger::INFO, "Entity holder successfully initialized");
+    Logger::print(Logger::SUCCESS, "Entity holder successfully initialized");
 }
 
 SDL_Renderer *Holder::getRenderer(){

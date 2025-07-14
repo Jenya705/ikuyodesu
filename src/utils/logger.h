@@ -2,6 +2,7 @@
 #define LOGGER_H
 
 #define RED     "\033[31m"
+#define GREEN   "\033[32m"
 #define YELLOW  "\033[33m"
 #define BLUE    "\033[34m"
 #define PURPLE  "\033[35m"
@@ -16,7 +17,7 @@ class Logger {
     Logger();
 
     enum type {
-        INFO, DEBUG, WARNING, ERROR
+        INFO, DEBUG, WARNING, ERROR, SUCCESS
     };
 
     template<typename... TArgs>
@@ -38,6 +39,8 @@ class Logger {
             case ERROR:
                 prefix = std::string(RED) + "[ERROR] " + RESET;
                 break;
+            case SUCCESS:
+                prefix = std::string(GREEN) + "[SUCCESS] " + RESET;
         }
 
         std::cout << prefix << st.str() << std::endl;

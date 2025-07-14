@@ -1,6 +1,7 @@
 #include "ikuyodesu.h"
 #include "entity/holder.h"
 #include "scene/scenemanager.h"
+#include "utils/logger.h"
 #include <iostream>
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
@@ -14,7 +15,7 @@ void Ikuyodesu::init(const char *title, int width, int height, bool fullscreen){
     if(fullscreen){
         flags = SDL_WINDOW_FULLSCREEN;
     }
-    SDL_Init(0);
+    SDL_Init(SDL_INIT_VIDEO);
 
     window = SDL_CreateWindow(
         title,

@@ -10,7 +10,7 @@ void Config::init(){
     std::string line;
     std::ifstream file("resources/config.ini");
     if(file.is_open()){
-        Logger::print(Logger::ERROR, "Config file already exist");
+        Logger::print(Logger::INFO, "Config file already exist");
     } else {
         std::ofstream config("resources/config.ini");
         config << "[info]\n";
@@ -18,6 +18,6 @@ void Config::init(){
         config << "version=\n";
         config << "width=\n";
         config << "height=\n";
-        Logger::print(Logger::INFO, "Config file created");
+        Logger::print(Logger::SUCCESS, "Config file created");
     }
 }

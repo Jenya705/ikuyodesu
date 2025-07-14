@@ -12,10 +12,19 @@ int main() {
     Config config;
     Ikuyodesu ikuyodesu;
     
-
-    config.init();
-    ikuyodesu.init("Ikuyodesu", config.get<int>("game_info", "width"), config.get<int>("game_info", "height"), false);
     Logger::print(Logger::DEBUG, "ikuyodesu version: ", config.get<std::string>("info", "version"));
+    config.init();
+
+    int width = config.get<int>("info", "width");
+    int height = config.get<int>("info", "height");
+
+    ikuyodesu.init("Ikuyodesu", width, height, false);
+    while(ikuyodesu.isRunning()){
+        ikuyodesu.eventHandler();
+        ikuyodesu.update();
+        ikuyodesu.render();
+    }
+    
     std::cout << "konichiwa, world!" << std::endl;
     TilemapLayer<int> layer;
     layer.for_each([](auto _1, auto _2) {});
