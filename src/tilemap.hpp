@@ -2,6 +2,7 @@
 #define TILEMAP_HPP_INCLUDED
 
 #include <cstdint>
+#include <functional>
 #include <unordered_map>
 #include "alg/vec.hpp"
 
@@ -30,7 +31,15 @@ public:
 
     T* tile_at(Vec2<std::int32_t> tile) {
         auto chunk = chunk_at(tile / 16);
-        return chunk == nullptr ? nullptr : chunk.tile_at(((tile % 16) + vec(CHUNK_R, CHUNK_C)) % 16);
+        return chunk == nullptr ?
+            nullptr :
+            chunk.tile_at(((tile % 16) + vec((std::int32_t)CHUNK_R, (std::int32_t)CHUNK_C)) % 16);
+    }
+
+    void for_each(std::function<void(Vec2<std::int32_t>, T&)> func) {
+        for (auto& p: chunks) {
+            func(p->first, p->second);
+        }
     }
 };
 
