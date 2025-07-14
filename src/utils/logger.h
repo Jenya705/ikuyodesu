@@ -3,6 +3,7 @@
 
 #define RED     "\033[31m"
 #define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
 #define PURPLE  "\033[35m"
 #define RESET   "\033[0m"
 
@@ -26,7 +27,7 @@ class Logger {
 
         switch(logType){
             case INFO:
-                prefix = "[INFO] ";
+                prefix = std::string(BLUE) + "[INFO] " + RESET;
                 break;
             case DEBUG:
                 prefix = std::string(PURPLE) + "[DEBUG] " + RESET;
