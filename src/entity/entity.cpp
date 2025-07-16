@@ -32,7 +32,7 @@ void Entity::create(const Vec2<float>& pos, int w, int h, const char *pathToText
     setTexture();
 }
 
-void Entity::update(){
+void Entity::update() {
     // _update logic?
     position = position + velocity;
 }
@@ -54,23 +54,23 @@ void Entity::kill(){
     holder.keeper.erase(this);
 }
 
-const char *Entity::getName(){
+const char *Entity::getName() const {
     return name;
 }
 
-const int Entity::getId(){
+const int Entity::getId() const {
     return id;
 }
 
-const bool Entity::getVisible(){
+const bool Entity::getVisible() const {
     return isVisible;
 }
 
-const bool Entity::getCollisible(){
+const bool Entity::getCollisible() const {
     return isCollisible;
 }
 
-const Holder::relationship Entity::getRel(){
+const Holder::relationship Entity::getRel() const {
     return rel;
 }
 

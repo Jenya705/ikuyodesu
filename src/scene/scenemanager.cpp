@@ -14,13 +14,14 @@ void SceneManager::init(){
     //test scene
     test.name = "test";
     test.id = 0;
-    test.layers.clear(); 
     //
     Logger::print(Logger::SUCCESS, "Scene manager successfully initialized");
 }
 
 void SceneManager::ikuyo(){
-    // TODO render logic
+    for (auto& obj: activeScene->objects) {
+        obj->render();
+    }
 }
 
 void SceneManager::setActive(Scene *scene){

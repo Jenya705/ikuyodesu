@@ -5,6 +5,8 @@
 #include <functional>
 #include <unordered_map>
 #include "alg/vec.hpp"
+#include "scene/base.hpp"
+#include <type_traits>
 
 template<typename T, std::size_t C, std::size_t R>
 class TilemapLayerChunk {
@@ -17,12 +19,26 @@ public:
 };
 
 template<typename T>
-class TilemapLayer {
+class NoFunction {
+public:
+    void operator()(Vec2<std::int32_t> v1, T& v2) {};
+};
+
+template<
+    typename T,
+    typename RenderF = NoFunction<T>,
+    typename UpdateF = NoFunction<T>
+>
+class TilemapLayer: public Base {
 public:
     constexpr static std::size_t CHUNK_C = 16;
     constexpr static std::size_t CHUNK_R = 16;
 
+    TilemapLayer(): render_function(RenderF()), update_function(UpdateF()) {}
+    TilemapLayer(RenderF render_function, UpdateF update_function): render_function(render_function), update_function(update_function) {}
+
     std::unordered_map<Vec2<std::int32_t>, TilemapLayerChunk<T, CHUNK_C, CHUNK_R>> chunks;
+    RenderF render_function; UpdateF update_function;
 
     TilemapLayerChunk<T, CHUNK_C, CHUNK_R>* chunk_at(Vec2<std::int32_t> chunk) {
         auto i = chunks.find(chunk);
@@ -46,6 +62,17 @@ public:
                 }
             }
        }
+    }
+
+    void update() override {
+        if (!std::is_same<UpdateF, NoFunction<T>>::value)
+            for_each(update_function);
+
+    }
+
+    void render() override {
+        if (!std::is_same<RenderF, NoFunction<T>>::value)
+            for_each(render_function);
     }
 };
 

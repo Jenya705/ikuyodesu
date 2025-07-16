@@ -4,22 +4,23 @@
 #include "holder.h"
 #include "../alg/vec.hpp"
 #include <SDL3/SDL.h>
+#include "../scene/base.hpp"
 
-class Entity {
+class Entity: public Base {
 
     public:
     Entity();
 
     void create(const Vec2<float>& pos, int w, int h, const char *pathToTexture, const char *n, bool visible, bool collisible, Holder::relationship r);
-    void update();
-    void render();
+    void update() override;
+    void render() override;
     void kill();
 
-    const char *getName();
-    const int getId();
-    const bool getVisible();
-    const bool getCollisible();
-    const Holder::relationship getRel();
+    const char *getName() const;
+    const int getId() const;
+    const bool getVisible() const;
+    const bool getCollisible() const;
+    const Holder::relationship getRel() const;
 
     void setName(const char *n);
     void setVisible(bool b);
@@ -29,7 +30,7 @@ class Entity {
     Vec2<float> position;
     Vec2<float> velocity;
 
-    SDL_FRect srcRect, destRect; 
+    SDL_FRect srcRect, destRect;
 
     private:
     SDL_Texture *texture;

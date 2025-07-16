@@ -5,7 +5,7 @@
 #include <SDL3/SDL.h>
 
 class Ikuyodesu {
-    
+
     public:
     Ikuyodesu();
 

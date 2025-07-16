@@ -3,12 +3,13 @@
 
 #include "../tilemap.hpp"
 #include <list>
+#include "base.hpp"
 #include <set>
 
 struct Scene {
     const char *name;
     int id;
-    std::list<TilemapLayer<int>> layers;
+    std::list<Base*> objects;
 };
 
 class SceneManager {
