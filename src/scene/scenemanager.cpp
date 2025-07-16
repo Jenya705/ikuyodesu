@@ -16,7 +16,7 @@ void SceneManager::init(){
     test.id = 0;
     test.layers.clear(); 
     //
-    Logger::print(Logger::SUCCESS, "Scene maanger successfully initialized");
+    Logger::print(Logger::SUCCESS, "Scene manager successfully initialized");
 }
 
 void SceneManager::ikuyo(){

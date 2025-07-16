@@ -8,8 +8,9 @@
 class Entity {
 
     public:
-    Entity(const Vec2<float>& pos, int w, int h, const char *pathToTexture, const char *name, bool visible, bool collisible, Holder::relationship r);
+    Entity();
 
+    void create(const Vec2<float>& pos, int w, int h, const char *pathToTexture, const char *n, bool visible, bool collisible, Holder::relationship r);
     void update();
     void render();
     void kill();
@@ -28,7 +29,7 @@ class Entity {
     Vec2<float> position;
     Vec2<float> velocity;
 
-    SDL_Rect srcRect, destRect; 
+    SDL_FRect srcRect, destRect; 
 
     private:
     SDL_Texture *texture;

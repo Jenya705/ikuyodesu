@@ -13,7 +13,7 @@ class Config {
     void init();
 
     template<typename T>
-    T get(const char *keyTitle, const char *keyMessage){
+    static T get(const char *keyTitle, const char *keyMessage){
         std::ifstream config("resources/config.ini");
         std::string title = "[" + std::string(keyTitle) + "]";
         std::string message = std::string(keyMessage) + "=";

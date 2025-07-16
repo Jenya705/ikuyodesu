@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "entity/player.h"
 #include <SDL3/SDL.h>
 
 class Ikuyodesu {
@@ -19,6 +20,8 @@ class Ikuyodesu {
     void setRunning(bool b);
 
     private:
+    Player player;
+
     SDL_Window *window;
     SDL_Renderer *renderer;
     SDL_Event event;

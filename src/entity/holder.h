@@ -11,7 +11,8 @@ class Holder {
     enum class relationship {
         FRIEND,
         ENEMY,
-        NEUTRAL
+        NEUTRAL,
+        PLAYER
     };
 
     void init(SDL_Renderer *renderer);

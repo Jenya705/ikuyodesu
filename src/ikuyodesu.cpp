@@ -31,17 +31,29 @@ void Ikuyodesu::init(const char *title, int width, int height, bool fullscreen){
         r = false;
     }
 
+    if(!renderer){
+        Logger::print(Logger::ERROR, "Failed to create renderer: ", SDL_GetError());
+    }
+
     holder.init(renderer);
+
     sceneManager.init();
     sceneManager.setActive(&sceneManager.test);
+
+    player.init(renderer);
 }
 
 void Ikuyodesu::update(){
     // _input/update shit
+    player.update();
+    player.handleInput();
 }
 
 void Ikuyodesu::render(){
     SDL_RenderClear(renderer);
+
+    player.ikuyo();
+
     SDL_RenderPresent(renderer);
 }
 

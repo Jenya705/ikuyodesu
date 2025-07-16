@@ -7,11 +7,24 @@
 
 Holder holder;
 
-Entity::Entity(const Vec2<float>& pos, int w, int h, const char *pathToTexture, const char *name, bool visible, bool collisible, Holder::relationship r)
-    : position(pos), velocity(0, 0), width(w), height(h), file(pathToTexture), name(name), isVisible(visible), isCollisible(collisible), rel(r)
+Entity::Entity()
+    : position(0, 0), velocity(0, 0)
 {
-    holder.keeper.insert(this);
+
+}
+
+void Entity::create(const Vec2<float>& pos, int w, int h, const char *pathToTexture, const char *n, bool visible, bool collisible, Holder::relationship r){
+    position = pos;
+    width = w;
+    height = h;
+    file = pathToTexture;
+    name = n;
+    isVisible = visible;
+    isCollisible = collisible;
+    rel = r;
+
     id = getUniqueId();
+    holder.keeper.insert(this);
 
     destRect.w = width;
     destRect.h = height;
@@ -26,9 +39,18 @@ void Entity::update(){
 
 void Entity::render(){
     // _render logic?
+    destRect = {
+        position.x,
+        position.y,
+        static_cast<float>(width),
+        static_cast<float>(height)
+    };
+
+    SDL_RenderTexture(holder.getRenderer(), texture, NULL, &destRect);
 }
 
 void Entity::kill(){
+    SDL_DestroyTexture(texture);
     holder.keeper.erase(this);
 }
 

@@ -11,9 +11,9 @@
 int main() {
     Config config;
     Ikuyodesu ikuyodesu;
-    
-    Logger::print(Logger::DEBUG, "ikuyodesu version: ", config.get<std::string>("info", "version"));
+
     config.init();
+    Logger::print(Logger::DEBUG, "ikuyodesu version: ", config.get<std::string>("info", "version"));
 
     int width = config.get<int>("info", "width");
     int height = config.get<int>("info", "height");
@@ -29,4 +29,5 @@ int main() {
     TilemapLayer<int> layer;
     layer.for_each([](auto _1, auto _2) {});
     
+    ikuyodesu.exit();
 }
