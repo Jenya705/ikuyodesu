@@ -36,6 +36,8 @@ public:
     T dot(const Vec2<T>& rhs) { return x * rhs.x + y * rhs.y; };
     T squared_len() { return dot(this); };
     T len() { return sqrt(squared_len()); };
+    T angle() { return atan2(y, x); };
+    T pussy_angle(float &xs, float &ys) { return atan2(ys - y, xs - x) * 180.0f / M_PI; }
 };
 
 template<typename T>

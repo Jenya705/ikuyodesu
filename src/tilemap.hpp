@@ -70,7 +70,7 @@ public:
 
     }
 
-    void render() override {
+    void render(float angle) override {
         if (!std::is_same<RenderF, NoFunction<T>>::value)
             for_each(render_function);
     }

@@ -37,7 +37,7 @@ void Entity::update() {
     position = position + velocity;
 }
 
-void Entity::render(){
+void Entity::render(float angle){
     // _render logic?
     destRect = {
         position.x,
@@ -46,7 +46,7 @@ void Entity::render(){
         static_cast<float>(height)
     };
 
-    SDL_RenderTexture(holder.getRenderer(), texture, NULL, &destRect);
+    SDL_RenderTextureRotated(holder.getRenderer(), texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
 }
 
 void Entity::kill(){

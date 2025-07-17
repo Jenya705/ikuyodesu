@@ -4,7 +4,7 @@
 class Base {
 public:
     virtual void update() = 0;
-    virtual void render() = 0;
+    virtual void render(float angle) = 0;
 };
 
 #endif

@@ -13,7 +13,7 @@ class Entity: public Base {
 
     void create(const Vec2<float>& pos, int w, int h, const char *pathToTexture, const char *n, bool visible, bool collisible, Holder::relationship r);
     void update() override;
-    void render() override;
+    void render(float angle) override;
     void kill();
 
     const char *getName() const;

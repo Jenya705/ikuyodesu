@@ -20,7 +20,7 @@ void SceneManager::init(){
 
 void SceneManager::ikuyo(){
     for (auto& obj: activeScene->objects) {
-        obj->render();
+        obj->render(0);
     }
 }
 

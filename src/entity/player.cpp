@@ -14,11 +14,13 @@ void Player::init(SDL_Renderer* r){
 }
 
 void Player::ikuyo(){
-    p.render();
+    angle = p.position.pussy_angle(mouseX, mouseY);
+    p.render(angle);
 }
 
 void Player::update(){
     p.update();
+    updateMousePos();
 }
 
 void Player::handleInput(){
@@ -38,4 +40,8 @@ void Player::handleInput(){
     if(keys[SDL_SCANCODE_D]){
         p.velocity.x += speed;
     }
+}
+
+void Player::updateMousePos(){
+    SDL_GetMouseState(&mouseX, &mouseY);
 }

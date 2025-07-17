@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "entity.h"
+#include "../alg/vec.hpp"
 #include <SDL3/SDL.h>
 
 class Player {
@@ -15,9 +16,12 @@ class Player {
     void handleInput();
 
     private:
+    void updateMousePos();
+
     Entity p;
 
     SDL_Renderer* renderer;
+    float mouseX, mouseY, angle;
 };
 
 #endif
